@@ -3,31 +3,16 @@ import "./App.css";
 import SidePanel from "./components/SidePanel";
 import Slide from "./components/Slide";
 import Tickets from "./components/Tickets";
+import View from "./components/View";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [selectedView, setSelectedView] = useState("Me");
   return (
-    <>
+    <div className="flex">
       <SidePanel />
-      <Tickets />
+      <View selectedView={selectedView} />
       <Slide />
-      <h1 className="text-xl font-bold  underline decoration-sky-500	 ">
-        Hello world!
-      </h1>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 

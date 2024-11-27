@@ -2,10 +2,12 @@ import Card from "./Card";
 const Slide = () => {
   return (
     <>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <div className="flex">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </>
   );
 };
