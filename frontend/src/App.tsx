@@ -2,11 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import SidePanel from "./components/SidePanel";
 import Slide from "./components/Slide";
-import Tickets from "./components/Tickets";
 import View from "./components/View";
 
 function App() {
-  const [selectedView, setSelectedView] = useState("Me");
+  const [selectedView] = useState("Me");
   return (
     <div className="flex">
       <SidePanel />
