@@ -13,15 +13,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@libsql/client": "^0.14.0",
     "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.4",
     "express": "^4.21.1",
     "pg": "^8.13.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.0",
+    "drizzle-kit": "^0.28.1",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }
 }
