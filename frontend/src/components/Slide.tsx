@@ -15,20 +15,6 @@ const Slide = (props: Props) => {
     "./src/components/DropDown.tsx",
   ]);
 
-  const handleKeyDown = (e: any) => {
-    if (e.key === "Enter") {
-      const currentFilename = filename.trim(); // Ensure there is no leading/trailing whitespace
-      if (currentFilename) {
-        setFiles((prevFiles) => [...prevFiles, currentFilename]);
-        setFilename(""); // Clear the input field after adding the file
-      }
-    } else {
-      console.log(e);
-      console.log(e.currentTarget.value);
-      console.log(filename);
-      setFilename(e.currentTarget.value); // Update filename as the user types
-    }
-  };
   return (
     <div
       className={`bg-slate-50 w-1/3 absolute right-0 h-full p-5  ${
