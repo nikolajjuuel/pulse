@@ -31,7 +31,7 @@ const Slide = (props: Props) => {
   };
   return (
     <div
-      className={`bg-slate-50 w-1/3 absolute right-0 h-full p-5 ${
+      className={`bg-slate-50 w-1/3 absolute right-0 h-full p-5  ${
         showSlide ? "" : "translate-x-full"
       }  transition-all duration-300 ease-in-out`}
     >
