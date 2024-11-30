@@ -1,12 +1,16 @@
 import Card from "./Card";
-const Slide = () => {
+interface Props {
+  setShowSlide: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Slide = (props: Props) => {
+  const { setShowSlide } = props;
   return (
     <>
       <div className="flex">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card setShowSlide={setShowSlide} />
+        <Card setShowSlide={setShowSlide} />
+        <Card setShowSlide={setShowSlide} />
+        <Card setShowSlide={setShowSlide} />
       </div>
     </>
   );
