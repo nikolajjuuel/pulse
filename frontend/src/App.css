@@ -6,6 +6,14 @@
     transform: rotate(360deg);
   }
 }
+html,
+body {
+  overflow-x: hidden;
+}
+div {
+  font-family: "Roboto", sans-serif;
+  color: #1e293b;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
