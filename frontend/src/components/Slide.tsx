@@ -87,6 +87,8 @@ const Slide = (props: Props) => {
             );
           })}
         </ul>
+        <div>Ai Recommendation</div>
+        <div>Comments Component</div>
       </div>
     </div>
   );

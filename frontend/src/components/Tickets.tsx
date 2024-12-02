@@ -7,10 +7,22 @@ const Slide = (props: Props) => {
   return (
     <>
       <div className="flex">
-        <Card setShowSlide={setShowSlide} />
-        <Card setShowSlide={setShowSlide} />
-        <Card setShowSlide={setShowSlide} />
-        <Card setShowSlide={setShowSlide} />
+        <div>
+          Section
+          <Card setShowSlide={setShowSlide} />
+          <div>Add Card</div>
+        </div>
+        <div>
+          Section
+          <Card setShowSlide={setShowSlide} />
+          <div>Add Card</div>
+        </div>
+        <div>
+          Section
+          <Card setShowSlide={setShowSlide} />
+          <div>Add Card</div>
+        </div>
+        <div>Add Section</div>
       </div>
     </>
   );

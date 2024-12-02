@@ -10,7 +10,6 @@ const View = (props: Props) => {
     return (
       <div className="bg-slate-100	w-5/6">
         <div className="p-4 border-b border-slate-700">{"My Tickets"}</div>
-        <div>{"Priority"}</div>
         <div>
           <Tickets setShowSlide={setShowSlide} />
         </div>
