@@ -1,5 +1,5 @@
 const StatusIcon = () => {
-  const yellow = "#f6e05e";
+  //const yellow = "#f6e05e";
   const red = "#f56565";
   return (
     <>
