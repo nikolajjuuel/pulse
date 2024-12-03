@@ -1,8 +1,12 @@
 import { useState } from "react";
+interface Props {
+  value: string;
+}
 
-const Dropdown = () => {
+const Dropdown = (props: Props) => {
+  const { value } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string>(value ?? "");
 
   const options = [
     { value: "great", label: "This is going great! 🎉" },
@@ -89,7 +93,7 @@ const Dropdown = () => {
         >
           {options.map((option) => (
             <li
-              key={option.value}
+              key={value}
               onClick={() => selectOption(option.label)}
               className="hover:bg-slate-100"
               style={{

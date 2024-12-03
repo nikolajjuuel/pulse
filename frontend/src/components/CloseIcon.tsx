@@ -1,5 +1,5 @@
 interface Props {
-  setState: React.Dispatch<React.SetStateAction<boolean>>;
+  setState: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const CloseIcon = (props: Props) => {
@@ -7,7 +7,7 @@ const CloseIcon = (props: Props) => {
   return (
     <div
       className="cursor-pointer p-1 rounded-full hover:bg-slate-200"
-      onClick={() => state((prev) => !prev)}
+      onClick={() => state((prev: any) => null)}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
