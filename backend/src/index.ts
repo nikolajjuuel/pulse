@@ -7,7 +7,7 @@ const PORT = 3000;
 app.use(express.json());
 
 // Routes
-app.use("/", routes);
+app.use("/api", routes);
 
 // Start the server
 app.listen(PORT, () => {
