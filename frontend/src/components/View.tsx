@@ -3,11 +3,12 @@ interface Props {
   setShowSlide: React.Dispatch<React.SetStateAction<boolean>>;
   data: any;
   setSelctedTicket: React.Dispatch<React.SetStateAction<any>>;
+  isLoading: boolean;
 }
 import Tickets from "./Tickets";
 
 const View = (props: Props) => {
-  const { view, setShowSlide, data, setSelctedTicket } = props;
+  const { view, setShowSlide, data, setSelctedTicket, isLoading } = props;
   console.log("Tickets", data);
 
   if (view === "User") {
@@ -18,6 +19,7 @@ const View = (props: Props) => {
           <Tickets
             tickets={data[0]?.userTickets}
             setSelctedTicket={setSelctedTicket}
+            isLoading={isLoading}
           />
         </div>
       </div>
@@ -31,6 +33,7 @@ const View = (props: Props) => {
           <Tickets
             tickets={data[1]?.teamTickets}
             setSelctedTicket={setSelctedTicket}
+            isLoading={isLoading}
           />
         </div>
       </div>

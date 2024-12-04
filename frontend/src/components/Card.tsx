@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import GetHelp from "./GetHelp";
 import StatusIcon from "./StatusIcon";
 
@@ -12,6 +13,7 @@ const Card = (props: Props) => {
     "./src/components/Slide.tsx",
     "./src/components/DropDown.tsx",
   ];
+
   return (
     <div
       //h-80
@@ -21,11 +23,11 @@ const Card = (props: Props) => {
       <div style={{ width: "100%" }}>
         <div className="flex text-sm font-bold items-center mb-1 p-2 border-dashed border-b-2 border-slate-300">
           <StatusIcon />
-          <div className="ml-1">{ticket.status}</div>
+          <div className="ml-1">{ticket?.status}</div>
         </div>
-        <div className="flex mb-1 ml-1 text-sm ">{ticket.title}</div>
+        <div className="flex mb-1 ml-1 text-sm ">{ticket?.title}</div>
         <div className="text-sm ml-1 font-bold">In Progress</div>
-        <div className="flex text-xs ml-3">{ticket.inprogress}</div>
+        <div className="flex text-xs ml-3">{ticket?.inprogress}</div>
 
         <div className="text-sm ml-1 font-bold">Files</div>
         <div className="pb-1 border-b-2 border-slate-400 ">
