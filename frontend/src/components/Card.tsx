@@ -1,32 +1,33 @@
+import { Ticket } from "../App";
 import GetHelp from "./GetHelp";
 import StatusIcon from "./StatusIcon";
 
 interface Props {
-  setShowSlide: React.Dispatch<React.SetStateAction<boolean>>;
+  ticket: Ticket | null;
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
 }
 const Card = (props: Props) => {
-  const { setShowSlide } = props;
+  const { ticket } = props;
+  console.log("Tick", ticket);
   const files: string[] = [
     "./src/components/Slide.tsx",
     "./src/components/DropDown.tsx",
   ];
+
   return (
     <div
       //h-80
       className="m-1 w-72  bg-slate-200 rounded-lg flex  justify-between border-2 border-slate-400"
-      onClick={() => setShowSlide((prevState: boolean) => !prevState)}
+      onClick={() => props.setSelctedTicket(ticket)}
     >
       <div style={{ width: "100%" }}>
         <div className="flex text-sm font-bold items-center mb-1 p-2 border-dashed border-b-2 border-slate-300">
           <StatusIcon />
-          <div className="ml-1">Wow, I'm really in the zone! 😎</div>
+          <div className="ml-1">{ticket?.status}</div>
         </div>
-        <div className="flex mb-1 ml-1 text-sm ">Get Database Set up!</div>
+        <div className="flex mb-1 ml-1 text-sm ">{ticket?.title}</div>
         <div className="text-sm ml-1 font-bold">In Progress</div>
-        <div className="flex text-xs ml-3">
-          Step: 1 - determine the best look especially when the text is really
-          long - just going to add a little bit more just to see how it looks
-        </div>
+        <div className="flex text-xs ml-3">{ticket?.inprogress}</div>
 
         <div className="text-sm ml-1 font-bold">Files</div>
         <div className="pb-1 border-b-2 border-slate-400 ">

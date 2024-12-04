@@ -12,6 +12,10 @@ export const getUsers = async (req: Request, res: Response) => {
 };
 
 export const createUser = async (req: Request, res: Response) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+
   const users = await db.insert(usersTable).values(req.body).returning();
   res.status(201).json({ message: "User created successfully", body: users });
 };

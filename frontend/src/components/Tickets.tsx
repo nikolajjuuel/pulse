@@ -1,28 +1,32 @@
+import { Ticket } from "../App";
 import Card from "./Card";
+import CardSkeleton from "./Skeletons/CardSkeleton";
 interface Props {
-  setShowSlide: React.Dispatch<React.SetStateAction<boolean>>;
+  tickets: Ticket[];
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
+  isLoading: boolean;
 }
 const Slide = (props: Props) => {
-  const { setShowSlide } = props;
+  const { tickets, setSelctedTicket, isLoading } = props;
   return (
     <>
       <div className="flex">
         <div>
           Section
-          <Card setShowSlide={setShowSlide} />
-          <div>Add Card</div>
+          {isLoading ? (
+            <CardSkeleton />
+          ) : (
+            <>
+              {tickets &&
+                tickets.map((ticket) => {
+                  return (
+                    <Card ticket={ticket} setSelctedTicket={setSelctedTicket} />
+                  );
+                })}
+              <div>Add Card</div>
+            </>
+          )}
         </div>
-        <div>
-          Section
-          <Card setShowSlide={setShowSlide} />
-          <div>Add Card</div>
-        </div>
-        <div>
-          Section
-          <Card setShowSlide={setShowSlide} />
-          <div>Add Card</div>
-        </div>
-        <div>Add Section</div>
       </div>
     </>
   );

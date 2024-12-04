@@ -1,9 +1,17 @@
 import { Router } from "express";
-import { getTickets, createTicket } from "../controllers/ticketController";
+import {
+  getUserTickets,
+  createTicket,
+  getTeamTickets,
+  updateTicket,
+} from "../controllers/ticketController";
 
 const router = Router();
 
-router.get("/", getTickets);
+router.get("/user/:id", getUserTickets);
+router.get("/team/:id", getTeamTickets);
+router.post("/", updateTicket);
+
 router.post("/", createTicket);
 
 export default router;
