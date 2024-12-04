@@ -9,7 +9,7 @@ import { Data, Ticket } from "../App";
 import Tickets from "./Tickets";
 
 const View = (props: Props) => {
-  const { view, setShowSlide, data, setSelctedTicket, isLoading } = props;
+  const { view, data, setSelctedTicket, isLoading } = props;
   console.log("Tickets", data);
 
   if (view === "User") {

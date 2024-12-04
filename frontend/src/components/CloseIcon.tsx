@@ -7,7 +7,7 @@ const CloseIcon = (props: Props) => {
   return (
     <div
       className="cursor-pointer p-1 rounded-full hover:bg-slate-200"
-      onClick={() => state((prev: any) => null)}
+      onClick={() => state(null)}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
