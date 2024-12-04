@@ -1,3 +1,4 @@
+import { Ticket } from "../App";
 import getData from "../utils/getData";
 import CloseIcon from "./CloseIcon";
 import Dropdown from "./Dropdown";
@@ -5,8 +6,16 @@ import { useEffect, useState } from "react";
 
 interface Props {
   showSlide: boolean;
-  setSelctedTicket: React.Dispatch<React.SetStateAction<any>>;
-  selectedTicket: any;
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
+  selectedTicket: Ticket | null;
+}
+
+export interface Comment {
+  comment: string;
+  timestamp: string;
+  id: number;
+  ticket_id: number;
+  user_id: number;
 }
 
 const Slide = (props: Props) => {
@@ -17,7 +26,7 @@ const Slide = (props: Props) => {
     "./src/components/DropDown.tsx",
   ]);
 
-  const [comments, setComments] = useState<any>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -121,16 +130,17 @@ const Slide = (props: Props) => {
           })}
         </ul>
         <div>Ai Recommendation</div>
+        {isLoading && <div>Loading...</div>}
         {comments &&
-          comments.map((comment: any) => {
+          comments.map((comment) => {
             return (
               <div className="flex">
-                <div>{comment.comment}</div>
-                <div>{comment.timestamp}</div>
+                <div>comment:{comment.comment}</div>
+                <div>date:{comment.timestamp}</div>
+                <div>by:{comment.user_id}</div>
               </div>
             );
           })}
-        <div>Comments Component</div>
       </div>
     </div>
   );

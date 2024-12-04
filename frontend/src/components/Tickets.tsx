@@ -1,8 +1,9 @@
+import { Ticket } from "../App";
 import Card from "./Card";
 import CardSkeleton from "./Skeletons/CardSkeleton";
 interface Props {
-  tickets: any;
-  setSelctedTicket: React.Dispatch<React.SetStateAction<any>>;
+  tickets: Ticket[];
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
   isLoading: boolean;
 }
 const Slide = (props: Props) => {
@@ -17,7 +18,7 @@ const Slide = (props: Props) => {
           ) : (
             <>
               {tickets &&
-                tickets.map((ticket: any) => {
+                tickets.map((ticket) => {
                   return (
                     <Card ticket={ticket} setSelctedTicket={setSelctedTicket} />
                   );

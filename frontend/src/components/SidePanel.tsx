@@ -1,8 +1,10 @@
+import { Ticket } from "../App";
+
 interface Props {
   view: string;
   setView: React.Dispatch<React.SetStateAction<"User" | "Team">>;
-  selectedTicket: any;
-  setSelctedTicket: React.Dispatch<React.SetStateAction<any>>;
+  selectedTicket: Ticket | null;
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
 }
 
 const SidePanel = (props: Props) => {

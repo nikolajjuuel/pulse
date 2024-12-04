@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { Ticket } from "../App";
 import GetHelp from "./GetHelp";
 import StatusIcon from "./StatusIcon";
 
 interface Props {
-  ticket?: any;
-  setSelctedTicket: React.Dispatch<React.SetStateAction<any>>;
+  ticket: Ticket | null;
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
 }
 const Card = (props: Props) => {
   const { ticket } = props;

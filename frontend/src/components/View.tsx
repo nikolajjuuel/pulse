@@ -1,10 +1,11 @@
 interface Props {
   view: "User" | "Team";
   setShowSlide: React.Dispatch<React.SetStateAction<boolean>>;
-  data: any;
-  setSelctedTicket: React.Dispatch<React.SetStateAction<any>>;
+  data: Data[];
+  setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
   isLoading: boolean;
 }
+import { Data, Ticket } from "../App";
 import Tickets from "./Tickets";
 
 const View = (props: Props) => {
@@ -17,7 +18,7 @@ const View = (props: Props) => {
         <div className="p-4 border-b border-slate-700">{"My Tickets"}</div>
         <div>
           <Tickets
-            tickets={data[0]?.userTickets}
+            tickets={data[0]?.userTickers}
             setSelctedTicket={setSelctedTicket}
             isLoading={isLoading}
           />
