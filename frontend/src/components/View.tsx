@@ -18,7 +18,7 @@ const View = (props: Props) => {
         <div className="p-4 border-b border-slate-700">{"My Tickets"}</div>
         <div>
           <Tickets
-            tickets={data[0]?.userTickers}
+            tickets={data[0]?.userTickets}
             setSelctedTicket={setSelctedTicket}
             isLoading={isLoading}
           />

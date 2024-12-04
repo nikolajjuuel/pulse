@@ -15,7 +15,7 @@ export interface Ticket {
   comments: Comment[];
 }
 export interface Data {
-  userTickers: Ticket[];
+  userTickets: Ticket[];
   teamTickets: Ticket[];
 }
 
