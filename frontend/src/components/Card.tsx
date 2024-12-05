@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Ticket } from "../App";
 import GetHelp from "./GetHelp";
 import StatusIcon from "./StatusIcon";
@@ -8,7 +9,6 @@ interface Props {
 }
 const Card = (props: Props) => {
   const { ticket } = props;
-  console.log("Tick", ticket);
   const files: string[] = [
     "./src/components/Slide.tsx",
     "./src/components/DropDown.tsx",
