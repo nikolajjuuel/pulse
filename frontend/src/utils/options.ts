@@ -1,0 +1,31 @@
+export const options = [
+  { value: "great", label: "This is going great! 🎉" },
+  { value: "zone", label: "Wow, I’m really in the zone. 😎" },
+  {
+    value: "productive",
+    label: "Look at me being all productive and stuff. 💪",
+  },
+  {
+    value: "harder",
+    label: "This is a little harder than I thought. 🤔",
+  },
+  { value: "rightChoice", label: "Hmm, was that the right choice? 🤷‍♂️" },
+  { value: "doubleCheck", label: "Alright, let me double-check that… 🧐" },
+  { value: "notRight", label: "Wait, that doesn’t look right. 😅" },
+  { value: "fixLater", label: "It’s fine, I’ll fix it in the next step. 🛠️" },
+  { value: "notWorking", label: "Hold on, why isn’t this working? 😕" },
+  { value: "skipped", label: "Maybe I skipped something…? 🙄" },
+  { value: "broke", label: "Nope, I definitely broke something. 😬" },
+  { value: "whatDidIDo", label: "What did I do?! 😱" },
+  { value: "googling", label: "Googling my exact error message... 🔍" },
+  { value: "reddit", label: "Okay, Reddit says this is common...ish? 🧵" },
+  {
+    value: "foreignStackOverflow",
+    label: "Why is Stack Overflow in another language?! 🌐",
+  },
+  { value: "stayCalm", label: "Deep breath, stay calm. 🧘" },
+  { value: "coffeeBreak", label: "Maybe I’ll take a quick coffee break. ☕" },
+  { value: "systemDesign", label: "Who even designed this system?! 😤" },
+  { value: "newError", label: "Wait, was that a new error message? 🫠" },
+  { value: "noIdea", label: "I have no idea what I’m doing. 🤯" },
+];

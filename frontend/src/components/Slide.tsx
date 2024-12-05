@@ -1,13 +1,18 @@
-import { Ticket } from "../App";
+import { Data, Ticket } from "../App";
 import getData from "../utils/getData";
 import CloseIcon from "./CloseIcon";
 import Dropdown from "./Dropdown";
 import { useEffect, useState } from "react";
+import StatusIcon from "./StatusIcon";
+import { options } from "../utils/options";
 
 interface Props {
   showSlide: boolean;
   setSelctedTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
   selectedTicket: Ticket | null;
+  setNewTicket: React.Dispatch<React.SetStateAction<Ticket | null>>;
+  data: Data[];
+  setData: React.Dispatch<React.SetStateAction<Data[]>>;
 }
 
 export interface Comment {
@@ -19,18 +24,74 @@ export interface Comment {
 }
 
 const Slide = (props: Props) => {
-  const { selectedTicket, setSelctedTicket } = props;
+  const { selectedTicket, setSelctedTicket, data, setData } = props;
   const [filename, setFilename] = useState<string>("");
   const [files, setFiles] = useState<string[]>([
     "./src/components/Slide.tsx",
     "./src/components/DropDown.tsx",
   ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [comments, setComments] = useState<Comment[] | null>(null);
+  const [summary, setSummary] = useState<string>(selectedTicket?.summary || "");
+  const [inprogress, setInprogress] = useState<string>(
+    selectedTicket?.inprogress || ""
+  );
 
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const save = async () => {
+    const data = {
+      title: "title",
+      summary: "sum",
+      status: "status",
+      inprogress: "progrtess",
+      user_id: 1,
+      team_id: 1,
+    };
+
+    try {
+      const res = await fetch("api/tickets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+    } catch (error) {
+      console.error("Error sending POST request:", error);
+    }
+  };
+
+  const handleSummary = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (selectedTicket) {
+      const ticket = data[0].userTickets.filter(
+        (t) => t.id === selectedTicket.id
+      );
+      setSummary(e.target.value);
+      ticket[0].summary = e.target.value;
+
+      const newData = [...data];
+      newData[0].userTickets = ticket;
+      setData(newData);
+    }
+  };
+  const handleProgress = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (selectedTicket) {
+      const ticket = data[0].userTickets.filter(
+        (t) => t.id === selectedTicket.id
+      );
+
+      const updatedValue = e.target.value;
+      setInprogress(updatedValue);
+
+      ticket[0].inprogress = updatedValue;
+      const newData = [...data];
+      newData[0].userTickets = ticket;
+      setData(newData);
+    }
+  };
 
   useEffect(() => {
-    console.log("Selected Ticket", selectedTicket);
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -47,7 +108,13 @@ const Slide = (props: Props) => {
     fetchData();
   }, []);
 
-  console.log("Comments", comments);
+  useEffect(() => {
+    console.log("Selected Ticket", selectedTicket);
+    if (selectedTicket) {
+      setSummary(selectedTicket.summary);
+      setInprogress(selectedTicket.inprogress);
+    }
+  }, [selectedTicket]);
 
   return (
     <div
@@ -57,11 +124,11 @@ const Slide = (props: Props) => {
     >
       <div className="flex place-content-between">
         <div>
-          <div className="text-xl font-bold">{"Ticket #123"}</div>
           <div className="flex items-center">
-            <div>{"Status"}</div>
-            <Dropdown value={selectedTicket?.status ?? ""} />
+            <StatusIcon />
+            <Dropdown options={options} value={selectedTicket?.status ?? ""} />
           </div>
+          <div className="text-xl font-bold">{selectedTicket?.title}</div>
         </div>
         <div>
           <CloseIcon setState={setSelctedTicket} />
@@ -72,15 +139,17 @@ const Slide = (props: Props) => {
       <div>
         <textarea
           className="w-full h-32"
-          value={selectedTicket?.summary}
+          value={summary}
           placeholder="Breakdown"
+          onChange={handleSummary}
         ></textarea>
       </div>
       <div>
         <textarea
           className="w-full h-32"
-          value={selectedTicket?.inprogress}
+          value={inprogress}
           placeholder="In Progress"
+          onChange={handleProgress}
         ></textarea>
       </div>
       <div>
@@ -142,6 +211,10 @@ const Slide = (props: Props) => {
             );
           })}
       </div>
+
+      <button onClick={save} className="bg-indigo-500 rounded-md">
+        Post to DB
+      </button>
     </div>
   );
 };

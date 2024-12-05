@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { db } from "../db/db";
 import { ticketsTable } from "../db/schema";
 import { sql } from "drizzle-orm";
@@ -49,6 +49,18 @@ export const updateTicket = async (req: Request, res: Response) => {
   res.json({ tickets: "updated a Ticket" });
 };
 
-export const createTicket = (req: Request, res: Response) => {
+export const createTicket = async (req: Request, res: Response) => {
   res.json({ tickets: "created a Tickets" });
+  const ticket = req.body;
+  await db.insert(ticketsTable).values({
+    title: ticket.title,
+    summary: ticket.summary,
+    status: ticket.status,
+    inprogress: ticket.inprogress,
+    user_id: 1,
+    team_id: 1,
+  });
+
+  //  .where(sql`${ticketsTable} = ${ticketId}`);
+  res.json({ tickets: "updated a Ticket" });
 };

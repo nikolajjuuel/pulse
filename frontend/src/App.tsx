@@ -12,7 +12,7 @@ export interface Ticket {
   summary: string;
   inprogress: string;
   files: string[];
-  comments: Comment[];
+  // comments: Comment[];
 }
 export interface Data {
   userTickets: Ticket[];
@@ -25,6 +25,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<Data[]>([]);
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
+  const [newTicket, setNewTicket] = useState<Ticket | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +37,6 @@ function App() {
           getData("/api/tickets/team/1"),
           // getData("/api/teams"),
         ]);
-        console.log(responses);
         // Check if all responses are successful
         const data = await Promise.all(responses.map((res) => res));
         setData(data);
@@ -49,6 +49,15 @@ function App() {
     };
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    console.log("new data added", newTicket);
+    //if (newTicket) {
+    //const newData = [...data];
+    //newData[0].userTickets.push(newTicket);
+    setData(data);
+    // }
   }, []);
 
   console.log("data", data);
@@ -66,11 +75,16 @@ function App() {
         data={data}
         setSelctedTicket={setSelectedTicket}
         isLoading={isLoading}
+        newTicket={newTicket}
+        setNewTicket={setNewTicket}
       />
       <Slide
         showSlide={showSlide}
         selectedTicket={selectedTicket}
         setSelctedTicket={setSelectedTicket}
+        setNewTicket={setNewTicket}
+        data={data}
+        setData={setData}
       />
     </div>
   );
